@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beginner Graphic Design Tools</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    color: #222;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2b6cb0;
+    margin-bottom: 30px;
+  }
+
+  .tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .tool {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .tool:hover {
+    transform: scale(1.05);
+  }
+
+  .tutorial {
+    margin-top: 30px;
+    background: #d4edda;
+    padding: 20px;
+    border-radius: 15px;
+    display: none;
+    line-height: 1.6;
+  }
+
+  button {
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background-color: #1a4f85;
+  }
+
+  .step {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Beginner Graphic Design Tools</h1>
+
+<div class="tool-list">
+  <div class="tool" onclick="showTutorial('photoshop')">Adobe Photoshop</div>
+  <div class="tool" onclick="showTutorial('illustrator')">Adobe Illustrator</div>
+  <div class="tool" onclick="showTutorial('canva')">Canva</div>
+  <div class="tool" onclick="showTutorial('gimp')">GIMP</div>
+</div>
+
+<div id="tutorial" class="tutorial">
+  <h2 id="toolName"></h2>
+  <div id="steps"></div>
+  <button onclick="hideTutorial()">Hide Tutorial</button>
+</div>
+
+<script>
+const tutorials = {
+  photoshop: {
+    name: "Adobe Photoshop",
+    steps: [
+      "Step 1: Open Photoshop and create a new document (File > New).",
+      "Step 2: Use the Move Tool to select and move objects.",
+      "Step 3: Use the Brush Tool to draw or paint on your canvas.",
+      "Step 4: Use Layers to organize your artwork and apply effects.",
+      "Step 5: Save your work regularly (File > Save As)."
+    ]
+  },
+  illustrator: {
+    name: "Adobe Illustrator",
+    steps: [
+      "Step 1: Open Illustrator and create a new document.",
+      "Step 2: Use the Pen Tool to draw shapes and paths.",
+      "Step 3: Use the Shape Tools (Rectangle, Ellipse) to create objects.",
+      "Step 4: Apply colors and gradients to your objects.",
+      "Step 5: Save your design as AI or export to other formats."
+    ]
+  },
+  canva: {
+    name: "Canva",
+    steps: [
+      "Step 1: Sign in to Canva and create a new design.",
+      "Step 2: Choose a template or start from scratch.",
+      "Step 3: Use the Text Tool to add headings and body text.",
+      "Step 4: Drag and drop images, icons, and shapes into your design.",
+      "Step 5: Download your final design or share it online."
+    ]
+  },
+  gimp: {
+    name: "GIMP",
+    steps: [
+      "Step 1: Open GIMP and create a new image (File > New).",
+      "Step 2: Use the Paintbrush or Pencil tool to draw on your canvas.",
+      "Step 3: Use Layers to organize your edits.",
+      "Step 4: Apply Filters and Effects to enhance your image.",
+      "Step 5: Save your project in XCF format or export as PNG/JPG."
+    ]
+  }
+};
+
+function showTutorial(toolKey) {
+  const tutorialDiv = document.getElementById('tutorial');
+  const toolName = document.getElementById('toolName');
+  const stepsDiv = document.getElementById('steps');
+
+  const tutorial = tutorials[toolKey];
+  toolName.textContent = tutorial.name;
+  
+  stepsDiv.innerHTML = '';
+  tutorial.steps.forEach(step => {
+    const p = document.createElement('div');
+    p.className = 'step';
+    p.textContent = step;
+    stepsDiv.appendChild(p);
+  });
+
+  tutorialDiv.style.display = 'block';
+}
+
+function hideTutorial() {
+  document.getElementById('tutorial').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
